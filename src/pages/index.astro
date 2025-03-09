@@ -7,21 +7,17 @@ import Layout from '../layouts/Layout.astro';
 
 import background from '../assets/background.svg';
 
-// const subject1 = fetch("/api/hello?name=you")
-// 	.then((response) => response.json())
-// 	.then((data) => data.subject)
-// 	.catch((error) => {
-// 		console.error(error);
-// 		return "error";
-// 	});
-const subject2 = fetch("https://my-butler.netlify.app/.netlify/functions/hello?name=me")
-	.then((response) => {
-		console.log("🪦", response);
-		// console.log("🪦🪦🪦", response.text());
-		return response.json()
-	})
+const subject1 = fetch("https://my-butler.netlify.app/.netlify/functions/hello?name=myouuu")
+	.then((response) => response.json())
+	.then((data) => data.subject)
+	.catch((error) => {
+		console.error(error);
+		return "error";
+	});
+const subject2 = fetch("https://my-butler.netlify.app/.netlify/functions/modern-hello")
+	.then((response) => response.json())
 	.then((data) => {
-		console.log("🪦🪦",data.subject, data);
+		console.log("🚀", data);
 		return data.subject;
 	})
 	.catch((error) => {
@@ -42,7 +38,7 @@ const subject2 = fetch("https://my-butler.netlify.app/.netlify/functions/hello?n
 		<h2>Test Fetch Netlify Function Custom Api</h2>
 		<TestFetchNetlifyFunctionCustomApi />
 		<h2>Test Simple API</h2>
-		<!-- <p>1:{subject1}</p> -->
+		<p>1:{subject1}</p>
 		<p>2:{subject2}</p>
 	</main>
 </div>
