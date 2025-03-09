@@ -22,7 +22,7 @@ const subject2 = fetch("https://my-butler.netlify.app/.netlify/functions/hello?n
 	})
 	.then((data) => {
 		console.log("🪦🪦",data.subject, data);
-		return data.title;
+		return data.subject;
 	})
 	.catch((error) => {
 		console.error("☠️",error);
