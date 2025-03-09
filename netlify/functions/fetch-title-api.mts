@@ -52,18 +52,9 @@ export default async (req: Request, context: Context) => {
     const pageDocument = await fetch(API_ENDPOINT)
       .then((response) => response.text())
       .then((html) => {
-        // Initialize the DOM parser
-        const parser = new DOMParser();
-
-        // Parse the text
-        const doc = parser.parseFromString(html, "text/html");
-
-        return doc;
+        return html;
       });
-    // You can now even select part of that html as you would in the regular DOM
-    const titreUne = pageDocument.querySelector("h2")?.textContent;
-    console.log("🐠", titreUne);
-    return Response.json({ title: titreUne });
+    return Response.json({ pageFetchedText: pageDocument });
   } catch (error) {
     console.log(error);
     return Response.json(

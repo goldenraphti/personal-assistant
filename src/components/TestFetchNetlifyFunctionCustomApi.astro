@@ -1,9 +1,22 @@
 ---
 
 const titreUne =  await fetch("https://my-butler.netlify.app/.netlify/functions/fetch-title-api")
-  .then((response) => response.json())
-  .then((data) => data.title)
+  .then((htmlText) => {
+    console.log("🐠", htmlText);
+    return htmlText
+  })
+  .then((htmlText) => {
+    // Initialize the DOM parser
+    const parser = new DOMParser();
+
+    // Parse the text
+    const pageDocument = parser.parseFromString(htmlText, "text/html");
+    // You can now even select part of that html as you would in the regular DOM
+    const titreUne = pageDocument.querySelector("h2")?.textContent;
+    console.log("🐠🐠", titreUne);
+  })
   .catch((error) => console.error(error));
+
 ---
 
 <section>
