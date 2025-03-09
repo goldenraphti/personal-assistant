@@ -66,6 +66,9 @@ export default async (req: Request, context: Context) => {
     return Response.json({ title: titreUne });
   } catch (error) {
     console.log(error);
-    return Response.json({ error: "Failed fetching data" }, { status: 500 });
+    return Response.json(
+      { error: "Failed fetching data:" + error },
+      { status: 500 }
+    );
   }
 };
