@@ -1,21 +1,32 @@
 ---
 import {parseHTML} from 'linkedom';
 
-const titreUne =  await fetch("https://my-butler.netlify.app/.netlify/functions/fetch-title-api")
-  .then((response) => {
-    return response.json();
-  })
-  .then((htmlText) => {
-    const {document: documentParsed} = parseHTML(htmlText);
-    // You can now even select part of that html as you would in the regular DOM
-    const titreUne = documentParsed.querySelector("h2")?.textContent;
-    console.log("🐠🐠", titreUne);
-  })
-  .catch((error) => console.error(error));
+// const titreUne =  await fetch("https://my-butler.netlify.app/.netlify/functions/fetch-title-api")
+//   .then((response) => {
+//     return response.json();
+//   })
+//   .then((htmlText) => {
+//     console.log("🐠", htmlText);
+//     const {document} = parseHTML(htmlText);
+//     // You can now even select part of that html as you would in the regular DOM
+//     console.log("🐠🐠", document);
+//     const titreUne = document.querySelector("h2")?.textContent;
+//     console.log("🐠🐠🐠", titreUne);
+//   })
+//   .catch((error) => console.error(error));
 
 ---
 
 <section>
   <h1>Test Fetch Custom Fetch Api on Netlify functions</h1>
-  <p>Titre de la une de Libé : {titreUne}</p>
+  <p>Titre de la une de Libé : <span id="libe-title"></span></p>
 </section>
+
+<script>
+  import { getTitleFromLiberationPage } from "../scripts/parseApiWebpage";
+  const titleLibe = await getTitleFromLiberationPage();
+  const titlePlacehoder = document.getElementById("libe-title");
+  if(titlePlacehoder && titleLibe) {
+    titlePlacehoder.textContent = titleLibe;
+  }
+</script>
