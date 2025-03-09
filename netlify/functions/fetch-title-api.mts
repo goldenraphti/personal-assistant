@@ -45,7 +45,7 @@
 
 import type { Context, Config } from "@netlify/functions";
 
-const API_ENDPOINT = "https://www.libberation.fr/";
+const API_ENDPOINT = "https://www.liberation.fr/";
 
 export default async (req: Request, context: Context) => {
   try {
