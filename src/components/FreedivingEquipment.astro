@@ -1,0 +1,37 @@
+---
+import { getHavkongenProducts} from '../scripts/feediving-equipment-sales-fetching.ts'
+
+const havkongenProducts = getHavkongenProducts();
+console.log("🐠havkongen products", havkongenProducts)
+---
+
+<section>
+  <h1>Freediving equipment - Sales on watch</h1>
+</section>
+
+<style>
+	section{
+		display: flex;
+		align-items: start;
+		flex-direction: column;
+		justify-content: center;
+		padding: 16px;
+	}
+
+	h1 {
+		font-size: 22px;
+		margin-top: 0.25em;
+	}
+
+	@media screen and (max-width: 768px) {
+
+		section {
+			display: block;
+			padding-top: 10%;
+		}
+
+		h1 {
+			line-height: 1.5;
+		}
+	}
+</style>

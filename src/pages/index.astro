@@ -1,11 +1,58 @@
 ---
-import Welcome from '../components/Welcome.astro';
+import FreedivingEquipment from '../components/FreedivingEquipment.astro';
+import TestFetchCronJob from '../components/TestFetchCronJob.astro';
+import TestFetchNetlifyFunctionCustomApi from '../components/TestFetchNetlifyFunctionCustomApi.astro';
 import Layout from '../layouts/Layout.astro';
 
-// Welcome to Astro! Wondering what to do next? Check out the Astro documentation at https://docs.astro.build
-// Don't want to use any of this? Delete everything in this file, the `assets`, `components`, and `layouts` directories, and start fresh.
+
+import background from '../assets/background.svg';
 ---
 
 <Layout>
-	<Welcome />
+
+<div id="container">
+	<img id="background" src={background.src} alt="" fetchpriority="high" />
+	<main>
+		<h1>Home - functions tests (cron & custom API using netlify functions)</h1>
+		<!-- <FreedivingEquipment /> -->
+		<h2>Test Fetch Cron Job</h2>
+		<TestFetchCronJob />
+		<h2>Test Fetch Netlify Function Custom Api</h2>
+		<TestFetchNetlifyFunctionCustomApi />
+	</main>
+</div>
+
 </Layout>
+
+<style>
+
+	#background {
+		position: fixed;
+		top: 0;
+		left: 0;
+		width: 100%;
+		height: 100%;
+		z-index: -1;
+		filter: blur(100px);
+	}
+
+	#container {
+		font-family: Inter, Roboto, 'Helvetica Neue', 'Arial Nova', 'Nimbus Sans', Arial, sans-serif;
+		height: 100%;
+	}
+
+	main {
+		height: 100%;
+		display: flex;
+		justify-content: center;
+	}
+
+
+	@media screen and (max-width: 768px) {
+		#container {
+			display: flex;
+			flex-direction: column;
+		}
+	}
+
+</style>

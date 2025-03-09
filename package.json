@@ -9,6 +9,7 @@
     "astro": "astro"
   },
   "dependencies": {
+    "@netlify/functions": "^3.0.1",
     "astro": "^5.4.2"
   }
 }

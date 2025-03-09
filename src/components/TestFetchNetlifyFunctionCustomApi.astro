@@ -1,0 +1,12 @@
+---
+
+const titreUne =  await fetch("/.netlify/functions/fetch-title-api")
+  .then((response) => response.json())
+  .then((data) => data.title)
+  .catch((error) => console.error(error));
+---
+
+<section>
+  <h1>Test Fetch Custom Fetch Api on Netlify functions</h1>
+  <p>Titre de la une de Libé : {titreUne}</p>
+</section>
