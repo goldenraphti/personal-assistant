@@ -1,18 +1,14 @@
 ---
+import {parseHTML} from 'linkedom';
 
 const titreUne =  await fetch("https://my-butler.netlify.app/.netlify/functions/fetch-title-api")
-  .then((htmlText) => {
-    console.log("🐠", htmlText);
-    return htmlText
+  .then((response) => {
+    return response.json();
   })
   .then((htmlText) => {
-    // Initialize the DOM parser
-    const parser = new DOMParser();
-
-    // Parse the text
-    const pageDocument = parser.parseFromString(htmlText, "text/html");
+    const {document: documentParsed} = parseHTML(htmlText);
     // You can now even select part of that html as you would in the regular DOM
-    const titreUne = pageDocument.querySelector("h2")?.textContent;
+    const titreUne = documentParsed.querySelector("h2")?.textContent;
     console.log("🐠🐠", titreUne);
   })
   .catch((error) => console.error(error));
