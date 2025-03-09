@@ -17,12 +17,12 @@ import background from '../assets/background.svg';
 const subject2 = fetch("https://my-butler.netlify.app/.netlify/functions/hello?name=me")
 	.then((response) => {
 		console.log("🪦", response);
-		console.log("🪦🪦🪦", response.json());
+		// console.log("🪦🪦🪦", response.text());
 		return response.json()
 	})
 	.then((data) => {
-		// console.log("🪦🪦",data.subject, data);
-		return data.subject;
+		console.log("🪦🪦",data.subject, data);
+		return data.title;
 	})
 	.catch((error) => {
 		console.error("☠️",error);
