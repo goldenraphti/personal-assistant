@@ -1,32 +1,11 @@
 ---
-// import * as cheerio from 'cheerio';
-
-// const titreUne =  await fetch("https://my-butler.netlify.app/.netlify/functions/fetch-title-api")
-//   .then((response) => {
-//     return response.json();
-//   })
-//   .then((htmlText) => {
-//     console.log("🐠", htmlText);
-//     const $ = cheerio.load(htmlText);
-//     // You can now even select part of that html as you would in the regular DOM
-//     console.log("🐠🐠", document);
-//     const titreUne = $('h2').text();;
-//     console.log("🐠🐠🐠", titreUne);
-//   })
-//   .catch((error) => console.error(error));
+const titreUne = await fetch("/.netlify/functions/fetch-title-api").
+  then(res => res.json()).
+  then(data => data.titreUne);
 
 ---
 
 <section>
   <h1>Test Fetch Custom Fetch Api on Netlify functions</h1>
-  <p>Titre de la une de Libé : <span id="libe-title"></span></p>
+  <p>Titre de la une de Libé : {{ titreUne }}</p>
 </section>
-
-<script>
-  import { getTitleFromLiberationPage } from "../scripts/parseApiWebpage";
-  const titleLibe = await getTitleFromLiberationPage();
-  const titlePlacehoder = document.getElementById("libe-title");
-  if(titlePlacehoder && titleLibe) {
-    titlePlacehoder.textContent = titleLibe;
-  }
-</script>
