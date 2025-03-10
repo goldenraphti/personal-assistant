@@ -1,8 +1,7 @@
 ---
-const titreUne = await fetch("/.netlify/functions/fetch-title-api").
+const titreUne = await fetch("https://my-butler.netlify.app/.netlify/functions/fetch-title-api").
   then(res => res.json()).
   then(data => data.titreUne);
-
 ---
 
 <section>
