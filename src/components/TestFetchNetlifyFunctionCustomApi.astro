@@ -1,10 +1,22 @@
 ---
-const titreUne = await fetch("https://my-butler.netlify.app/.netlify/functions/fetch-title-api").
-  then(res => res.json()).
-  then(data => data.titreUne);
+
 ---
 
 <section>
   <h1>Test Fetch Custom Fetch Api on Netlify functions</h1>
-  <p>Titre de la une de Libé : {{ titreUne }}</p>
+  <p>Titre de la une de Libé : <span id="libe-title"></span></p>
 </section>
+
+<script>
+const titreUne = await fetch("https://my-butler.netlify.app/.netlify/functions/fetch-title-api").
+  then(res => res.json()).
+  then(data => data.titreUne);
+
+const titlePlacehoder = document.getElementById("libe-title");
+
+console.log("titleLibe:", titreUne);
+
+if(titlePlacehoder && titreUne) {
+  titlePlacehoder.textContent = titreUne;
+}
+</script>
