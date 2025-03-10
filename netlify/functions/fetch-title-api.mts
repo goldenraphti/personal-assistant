@@ -12,7 +12,7 @@ export default async (req: Request, context: Context) => {
       });
     const $ = cheerio.load(pageDocument);
     // You can now even select part of that html as you would in the regular DOM
-    const titreUne = $("h2").text();
+    const titreUne = $("h2:first").text();
     return Response.json({ titreUne });
   } catch (error) {
     console.log(error);
