@@ -1,5 +1,5 @@
 ---
-import {parseHTML} from 'linkedom';
+// import * as cheerio from 'cheerio';
 
 // const titreUne =  await fetch("https://my-butler.netlify.app/.netlify/functions/fetch-title-api")
 //   .then((response) => {
@@ -7,10 +7,10 @@ import {parseHTML} from 'linkedom';
 //   })
 //   .then((htmlText) => {
 //     console.log("🐠", htmlText);
-//     const {document} = parseHTML(htmlText);
+//     const $ = cheerio.load(htmlText);
 //     // You can now even select part of that html as you would in the regular DOM
 //     console.log("🐠🐠", document);
-//     const titreUne = document.querySelector("h2")?.textContent;
+//     const titreUne = $('h2').text();;
 //     console.log("🐠🐠🐠", titreUne);
 //   })
 //   .catch((error) => console.error(error));

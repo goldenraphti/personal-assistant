@@ -42,7 +42,7 @@
 //     return Response.json({ error: 'Failed fetching data' }, { status: 500 });
 //   }
 // };
-
+import * as cheerio from "cheerio";
 import type { Context, Config } from "@netlify/functions";
 
 const API_ENDPOINT = "https://www.liberation.fr/";
@@ -54,7 +54,10 @@ export default async (req: Request, context: Context) => {
       .then((html) => {
         return html;
       });
-    return Response.json({ pageFetchedText: pageDocument });
+    const $ = cheerio.load(pageDocument);
+    // You can now even select part of that html as you would in the regular DOM
+    const titreUne = $("h2").text();
+    return Response.json({ pageFetchedText: pageDocument, titreUne });
   } catch (error) {
     console.log(error);
     return Response.json(

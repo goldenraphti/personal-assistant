@@ -11,6 +11,6 @@
   "dependencies": {
     "@netlify/functions": "^3.0.1",
     "astro": "^5.4.2",
-    "linkedom": "^0.18.9"
+    "cheerio": "^1.0.0"
   }
 }
